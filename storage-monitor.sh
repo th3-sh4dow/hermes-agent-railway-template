@@ -13,5 +13,5 @@ fi
 
 echo "Starting Supabase storage monitoring..."
 
-# Run monitoring loop (check every 5 minutes)
-python /usr/local/bin/supabase_storage.py monitor 300
+# Run monitoring loop using the Hermes venv Python (check every 5 minutes)
+/opt/hermes/.venv/bin/python3 /usr/local/bin/supabase_storage.py monitor 300
