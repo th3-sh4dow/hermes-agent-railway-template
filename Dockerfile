@@ -2,7 +2,7 @@ FROM nousresearch/hermes-agent:v2026.7.20@sha256:f7b35053268f532f98955195c909f15
 
 # Install Supabase Python client
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 # Copy custom scripts
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/hermes-railway-entrypoint
