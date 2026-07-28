@@ -22,4 +22,10 @@ export HERMES_DASHBOARD_BASIC_AUTH_USERNAME="$dashboard_username"
 export HERMES_DASHBOARD_BASIC_AUTH_PASSWORD="$dashboard_password"
 export HERMES_DASHBOARD_BASIC_AUTH_SECRET="$dashboard_secret"
 
+# Start background storage monitor if Supabase is configured
+if [ -n "${SUPABASE_URL:-}" ] && [ -n "${SUPABASE_KEY:-}${SUPABASE_SECRET_KEY:-}" ]; then
+    echo "Starting Supabase storage monitor in background..."
+    /usr/local/bin/storage-monitor.sh &
+fi
+
 exec /init /opt/hermes/docker/main-wrapper.sh "$@"
